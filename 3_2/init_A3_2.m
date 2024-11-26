@@ -8,23 +8,25 @@ close all
 clc
 
 %% Set parameters
-L = ..;                  % m
-K = ..;                  % m/rad
+L = 1;                  % m
+K = 2;                  % m/rad
 phi_bar = 5/360*2*pi ;  % rad
 %
-T = ..;
-D = ..;
-c = ..;
+T = 0.2;
+D = 0.1;
+c = 0.5;
 
 % initial conditions
-q0 = ..;
-q1 = ..;
+q0 = 0.3;
+q1 = -0.1;
 
 %% Determine consistent initial conditions for the algebraic loop
 
-residuum =  ..;
+residuum =  residuum(phi_0,q0);
 phi_0_init = ..;
 phi_0i = ..;
+
+r = arctan((K*(phi_0-phi_bar)+2*q0)/L)-phi_0;
 
 for i = 1:length(phi_0i)
         phi_0i(i) = fsolve( ..);
