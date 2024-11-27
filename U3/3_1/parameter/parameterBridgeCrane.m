@@ -3,15 +3,15 @@
 disp('Initialize parameter bridge crane...');
 
 % Mass of cart
-param.M = 10;    % [kg]
+param.M = ..;    % [kg]
 % Mass of gripper
-param.m = 1;     % [kg]
+param.m = ..;     % [kg]
 % Gravitational constant 
-param.g = 9.81;  % [m/s^2]
+param.g = ..;  % [m/s^2]
 % Length of rope
-param.l = 1;     % [m]
+param.l = ..;     % [m]
 % Viscous friction
-param.sigma = 1; % [N*m/(rad/s)]
+param.sigma = ..; % [N*m/(rad/s)]
 
 disp('Parameter bridge crane initialized');
 

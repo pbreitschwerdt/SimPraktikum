@@ -8,25 +8,23 @@ close all
 clc
 
 %% Set parameters
-L = 1;                  % m
-K = 2;                  % m/rad
+L = ..;                  % m
+K = ..;                  % m/rad
 phi_bar = 5/360*2*pi ;  % rad
 %
-T = 0.2;
-D = 0.1;
-c = 0.5;
+T = ..;
+D = ..;
+c = ..;
 
 % initial conditions
-q0 = 0.3;
-q1 = -0.1;
+q0 = ..;
+q1 = ..;
 
 %% Determine consistent initial conditions for the algebraic loop
 
-residuum =  residuum(phi_0,q0);
+residuum =  ..;
 phi_0_init = ..;
 phi_0i = ..;
-
-r = arctan((K*(phi_0-phi_bar)+2*q0)/L)-phi_0;
 
 for i = 1:length(phi_0i)
         phi_0i(i) = fsolve( ..);
@@ -93,7 +91,7 @@ for i = 1:10:length(t)
             hold off;
             xlabel('Zeit $t$','interpreter','latex');
             ylabel('Winkel $\varphi(t)$','interpreter','latex');
-            legend({'$\varphi(t)$','$\bar \varphi$'},'interpreter','latex')
+            legend({'$\bar \varphi$','$\varphi(t)$'},'interpreter','latex')
             title('Zeitverlauf des Gelenkwinkels')
     else
         p1.YData = x_e(i,:)+x_s(i,:);
