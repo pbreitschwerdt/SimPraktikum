@@ -1,4 +1,4 @@
-clear all; close all; clc;
+close all; clc;
 
 %% Calculate ODE via external function
 %   VF = EulerLagrange(L,X,Q_i,Q_e,R,par,varargin) uses the Lagrangian of a
@@ -28,12 +28,12 @@ addpath(genpath('functions'));
 syms s sd theta thetad Fext m M g l sigma
 
 % Potential energy
-E_pot = ..;
+E_pot = -m*g*l*cos(theta);
 % Kinetic energy
-E_kin = ..;
+E_kin = 0.5*(M+m)*(sd^2)+m*l*sd*thetad*cos(theta)+0.5*m*(l^2)*(thetad^2);
 
 % Lagrange function
-L = ..;
+L = E_kin-E_pot;
 
 
 % Define generalized coordinates and velocities X
@@ -52,5 +52,5 @@ f = EulerLagrange(L,X,Q_i,Q_e,R,par);
 disp('ODE generated');
 
 % Define output function
-h = ..;
+h = s+l*sin(theta);
 
