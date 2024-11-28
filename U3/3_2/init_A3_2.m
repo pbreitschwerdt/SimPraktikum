@@ -1,33 +1,28 @@
-%--------------------------------------------------------------------------
-% Simulationstechnik, Uebung/Praktikum 3.2
-% Simulation of a controlled elastic robot with algebraic loop
-%--------------------------------------------------------------------------
-%% clean up
 clear all
 close all
 clc
 
 %% Set parameters
-L = ..;                  % m
-K = ..;                  % m/rad
+L = 1;                  % m
+K = 2;                  % m/rad
 phi_bar = 5/360*2*pi ;  % rad
 %
-T = ..;
-D = ..;
-c = ..;
+T = 0.2;
+D = 0.1;
+c = 0.5;
 
 % initial conditions
-q0 = ..;
-q1 = ..;
+q0 = 0.3;
+q1 = -0.1;
 
 %% Determine consistent initial conditions for the algebraic loop
 
-residuum =  ..;
-phi_0_init = ..;
-phi_0i = ..;
+residuum = @(phi_0, q0) atan((K*(phi_0-phi_bar)+2*q0)/L)-phi_0;
+phi_0_init = [ -60*pi/180, -30*pi/180, 80*pi/180 ];
+phi_0i = [0, 0, 990];
 
 for i = 1:length(phi_0i)
-        phi_0i(i) = fsolve( ..);
+        phi_0i(i) = fsolve(@(phi_0) residuum(phi_0, q0), phi_0_init(i));
 end
 u0 = K*(phi_0i-phi_bar);
 
@@ -50,7 +45,7 @@ figure('color', 'w');
 %% %% Animate simulations results
 
 % run simulink model
-..;
+sim('model_A3_2.slx');
 
 
 % no changes necessary beyond this line
