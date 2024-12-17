@@ -19,7 +19,7 @@ q1 = -0.1;
 
 residuum = @(phi_0, q0) atan((K*(phi_0-phi_bar)+2*q0)/L)-phi_0;
 phi_0_init = [ -60*pi/180, -30*pi/180, 80*pi/180 ];
-phi_0i = [0, 0, 990];
+phi_0i = [0, 0, 1000];
 
 for i = 1:length(phi_0i)
         phi_0i(i) = fsolve(@(phi_0) residuum(phi_0, q0), phi_0_init(i));

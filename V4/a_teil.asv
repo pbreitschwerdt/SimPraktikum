@@ -1,0 +1,53 @@
+% 4.Uebung Aufgabe a)
+%
+% Vergleich dreier Integrationsverfahren:
+h_euler = [0.05, 0.5, 1.0, 2.0, 2.2];
+h_adams = [0.05, 0.5, 1.0, 1.3];
+h_ruku4 = [0.05, 0.5, 2.0, 2.7, 2.8, 2.9];
+
+
+% Zeitspanne
+t0 = 0;     % Startzeit
+tfinal = 10; % Endzeit
+x0 = 1;     % Anfangswert
+
+% Diagramm vorbereiten
+figure(1)
+clf
+% -------- Euler Integrator ---------
+%
+% Definition der Integrationsparameter
+...
+% Schleife ueber alle Werte der Schrittweite
+for i=1: ...
+    % Integration des Systems ueb4sys1 mit ieuler:
+    [t,x] = ieuler(...);
+    % Den Zeitverlauf in das erste Diagramm zeichnen
+    figure(1)
+    subplot(3,1,1)
+    hold on
+    plot(t,x)
+end
+% Beschriftung des Diagramms
+...
+    
+% -------- Adams-Bashforth Integrator ---------
+%
+% ggf. Variablen loeschen oder neu zuweisen
+...
+% Schleife ueber alle Werte der Schrittweite
+for i=1: ...
+    % Integration des Systems ueb4sys1 mit iadams:
+    [t,x] = iadams(...)
+    % Den Zeitverlauf in das zweite Diagramm zeichnen
+    subplot(3,1,2)
+    hold on
+    plot(t,x)
+end
+% Beschriftung des Diagramms
+...
+    
+% -------- Runge-Kutta Integrator, siehe oben ---------
+%
+% ggf. Variablen loeschen oder neu zuweisen
+...

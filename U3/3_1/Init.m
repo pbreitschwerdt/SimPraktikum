@@ -12,10 +12,11 @@ run('parameterBridgeCrane')
 
 
 % Set initial conditions for integrator
-%x0 = [0; 0; 20*pi/180; 0];
+% b)
+x0 = [0; 0; 20*pi/180; 0];
 
 % d)
-x0 = [0; 0; 170*pi/180; 0];
+%x0 = [0; 0; 170*pi/180; 0];
 
 % Initial conditions for sensitivity ODE
 xp0 = zeros(4,2);
