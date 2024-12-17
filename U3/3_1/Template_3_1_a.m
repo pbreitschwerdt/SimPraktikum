@@ -1,4 +1,4 @@
-clear all; close all; clc;
+close all; clc;
 
 %% Calculate ODE via external function
 %   VF = EulerLagrange(L,X,Q_i,Q_e,R,par,varargin) uses the Lagrangian of a
@@ -22,32 +22,24 @@ clear all; close all; clc;
 %      filename: file name(s) for created output
 
 % Add path
-clc, clear all,
 addpath(genpath('functions'));
 
 % Define symbolic variables
 syms s sd theta thetad Fext m M g l sigma
 
-% M=10;
-% m=1;
-% g=9.81;
-% l=1;
-% sigma=1;
-
 % Potential energy
 E_pot = -m*g*l*cos(theta);
 % Kinetic energy
-E_kin = 0.5*(M+m)*sd^2+m*l*sd*thetad*cos(theta)+0.5*m*l^2*thetad^2;
+E_kin = 0.5*(M+m)*(sd^2)+m*l*sd*thetad*cos(theta)+0.5*m*(l^2)*(thetad^2);
 
 % Lagrange function
-L = E_kin - E_pot;
+L = E_kin-E_pot;
 
 
 % Define generalized coordinates and velocities X
 X   = {s sd theta thetad};
 % Define internal forces and external generalized forces
 Q_i = {0 -sigma*thetad}; Q_e = {Fext 0};
-% Q = [Fext; -sigma*thetad];
 % Define parameters
 par = {m M g l sigma};
 % Define dissipation function
@@ -61,3 +53,4 @@ disp('ODE generated');
 
 % Define output function
 h = s+l*sin(theta);
+

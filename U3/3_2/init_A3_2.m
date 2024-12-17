@@ -1,8 +1,3 @@
-%--------------------------------------------------------------------------
-% Simulationstechnik, Uebung/Praktikum 3.2
-% Simulation of a controlled elastic robot with algebraic loop
-%--------------------------------------------------------------------------
-%% clean up
 clear all
 close all
 clc
@@ -22,14 +17,12 @@ q1 = -0.1;
 
 %% Determine consistent initial conditions for the algebraic loop
 
-residuum =  residuum(phi_0,q0);
-phi_0_init = ..;
-phi_0i = ..;
-
-r = arctan((K*(phi_0-phi_bar)+2*q0)/L)-phi_0;
+residuum = @(phi_0, q0) atan((K*(phi_0-phi_bar)+2*q0)/L)-phi_0;
+phi_0_init = [ -60*pi/180, -30*pi/180, 80*pi/180 ];
+phi_0i = [0, 0, 1000];
 
 for i = 1:length(phi_0i)
-        phi_0i(i) = fsolve( ..);
+        phi_0i(i) = fsolve(@(phi_0) residuum(phi_0, q0), phi_0_init(i));
 end
 u0 = K*(phi_0i-phi_bar);
 
@@ -52,7 +45,7 @@ figure('color', 'w');
 %% %% Animate simulations results
 
 % run simulink model
-..;
+sim('model_A3_2.slx');
 
 
 % no changes necessary beyond this line
@@ -93,7 +86,7 @@ for i = 1:10:length(t)
             hold off;
             xlabel('Zeit $t$','interpreter','latex');
             ylabel('Winkel $\varphi(t)$','interpreter','latex');
-            legend({'$\varphi(t)$','$\bar \varphi$'},'interpreter','latex')
+            legend({'$\bar \varphi$','$\varphi(t)$'},'interpreter','latex')
             title('Zeitverlauf des Gelenkwinkels')
     else
         p1.YData = x_e(i,:)+x_s(i,:);
